@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -9,11 +9,19 @@ import {
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 const AddItem = ({title}) => {
+  const [text, setText] = useState('');
+
+  const onChange = (textValue) => setText(textValue);
+
   return (
     <View>
-      <TextInput placeholder="Add Item..." style={styles.input} />
+      <TextInput
+        placeholder="Add Item..."
+        style={styles.input}
+        onChangeText={onChange}
+      />
       <TouchableOpacity style={styles.btn}>
-        <Text styke={styles.btnText}>
+        <Text style={styles.btnText}>
           <Icon name="plus" size={20} />
           Add Item
         </Text>
@@ -22,6 +30,22 @@ const AddItem = ({title}) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  input: {
+    height: 60,
+    padding: 8,
+    fontSize: 16,
+  },
+  btn: {
+    backgroundColor: '#c2bad8',
+    padding: 9,
+    margin: 5,
+  },
+  btnText: {
+    color: 'darkslateblue',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+});
 
-export default Additem;
+export default AddItem;
